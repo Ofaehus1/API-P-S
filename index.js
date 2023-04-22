@@ -12,8 +12,7 @@ app.get('/',(req, res)=>{
 //API ROUTER NOS RENDERIZARA LAS RUTAS CREADAS 
 apiRouter(app)
 
-
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3001
 
 console.log(process.env.PORT)
 
@@ -21,5 +20,7 @@ console.log(process.env.PORT)
 app.listen(PORT,()=>{
     console.log('Api escuchando en '+PORT)
 })
+
+
 
  
