@@ -13,7 +13,7 @@ apiRouter(app);
 
 const PORT = process.env.PORT || 3000;
 
-console.log(process.env.PORT);
+console.log(process.env.PORT); 
 
 //LANZAMIENTO DE API
 app.listen(PORT, () => {
