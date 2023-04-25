@@ -1,7 +1,11 @@
 const express = require('express');
 const apiRouter = require('./server');
 const app = express();
+const morgan = require('morgan')
 require('dotenv').config();
+
+//middlewares
+app.use(morgan('dev'))
 
 //RUTA PRINCIPAL O HOME DEL API
 app.get('/', (req, res) => {
