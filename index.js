@@ -6,6 +6,7 @@ require('dotenv').config();
 
 //middlewares
 app.use(morgan('dev'))
+app.use(express.json())
 
 //RUTA PRINCIPAL O HOME DEL API
 app.get('/', (req, res) => {
