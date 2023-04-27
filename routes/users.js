@@ -12,9 +12,9 @@ import {
 //Ruta es para gestionar usuarios
 
 router.get('/', listar);
-router.get('/', listaUno);
+router.get('/:id', listaUno);
 router.post('/', agregar);
-router.put('/', editar);
-router.delete('/', eliminar);
+router.put('/:id', editar);
+router.delete('/:id', eliminar);
 
 export default router;
