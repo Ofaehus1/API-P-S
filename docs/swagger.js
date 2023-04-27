@@ -1,13 +1,27 @@
-const swaggerJsdoc = require('swagger-jsdoc');
+import swaggerJsdoc from 'swagger-jsdoc';
+
+const swaggerOptions = {
+    definition: {
+     openapi: '3.0.0',
+      info: {
+        title: 'API-NODE',
+        version: '1.0.0',
+      },
+      servers:[
+        {
+          url: "http://localhost:3004/api"
+        },
+        {
+          url: "http://localhost:3000/api"
+        }
+      ],
+    },
+    apis: ['./routes/*.js'],
+  }
 
 /*
  * Opciones
  */
 
-const options = {
-  apis: ['./routes/*.js'],
-};
-
-const openApiConfiguration = swaggerJsdoc(options);
-
-module.exports = openApiConfiguration;
+const swaggerSpec = swaggerJsdoc(swaggerOptions)
+export default swaggerSpec;
