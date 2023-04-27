@@ -7,7 +7,7 @@ import {
   eliminar,
   editar,
   listaUno,
-} from '../controllers/userController';
+} from '../controllers/userController.js';
 
 //Ruta es para gestionar usuarios
 

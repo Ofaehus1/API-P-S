@@ -1,12 +1,12 @@
 import mongoose from 'mongoose';
 const userSchema = mongoose.Schema(
   {
-    nombre: {
+    nombreUsuario: {
       type: String,
       require: true,
       trim: true,
     },
-    celular: {
+    celularUsuario: {
       type: Number,
       require: true,
       trim: true,
@@ -17,5 +17,5 @@ const userSchema = mongoose.Schema(
   }
 );
 
-const Usuario = mongoose.model('bd', userSchema);
+const Usuario = mongoose.model("bd", userSchema);
 export default Usuario;

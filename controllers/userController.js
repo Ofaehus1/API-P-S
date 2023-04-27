@@ -1,4 +1,4 @@
-import Usuario from '../models/users';
+import Usuario from '../routes/users.js';
 
 //Crear
 const agregar = async (req, res) => {
@@ -57,11 +57,11 @@ const editar = async (req, res) => {
 
 //Captura los datos del formulario
 
-Usuario.nombre = req.body.nombre || Usuario.nombre;
-Usuario.celular = req.body.celular || Usuario.celular;
+usuario.nombreUsuario = req.body.nombreUsuario || usuario.nombreUsuario;
+usuario.celularUsuario = req.body.celularUsuario || usuario.celularUsuario;
 
 try {
-  const usuarioGuardado = await Usuario.save();
+  const usuarioGuardado = await usuario.save();
   res.json({ body: usuarioGuardado, msg: 'Registro actualizado.', ok: 'si' });
 } catch (error) {
   console.log(error);
@@ -69,7 +69,7 @@ try {
 
 const listaUno = async (req, res) => {
   const { id } = req.params;
-  const usuario = await Usuario.findById(id);
+  const usuario = await usuario.findById(id);
   if (!usuario) {
     const error = new Error('Registro no encontrado');
     return res.status(404).json({ msg: error.message, ok: 'si' });
