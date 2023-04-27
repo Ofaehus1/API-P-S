@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.js",
-    "start": "node index.js",
-    "lint": "eslint"
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
@@ -15,14 +15,9 @@
   "dependencies": {
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "mongoose": "^7.0.5",
-    "mongose": "^0.0.2-security",
-    "morgan": "^1.10.0"
+    "mongoose": "^7.0.5"
   },
   "devDependencies": {
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "nodemon": "^2.0.22",
-    "prettier": "^2.8.8"
+    "nodemon": "^2.0.22"
   }
 }

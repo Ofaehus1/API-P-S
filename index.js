@@ -1,27 +1,18 @@
-const express = require('express');
-const apiRouter = require('./server');
+import express from 'express';
+import dotenv from 'dotenv';
+import conectarBD from './config/bd';
+
+import router from './routes/users';
+
 const app = express();
-const morgan = require('morgan')
-require('dotenv').config();
+app.use(express.json());
 
-
-//middlewares
-app.use(morgan('dev'))
-app.use(express.json())
-
-//RUTA PRINCIPAL O HOME DEL API
-app.get('/', (req, res) => {
-  res.send('Hola estan en la raiz');
-});
-
-//API ROUTER NOS RENDERIZARA LAS RUTAS CREADAS
-apiRouter(app);
+dotenv.config();
+conectarBD();
+app.use('/api/users', router);
 
 const PORT = process.env.PORT || 3000;
 
-console.log(process.env.PORT); 
-
-//LANZAMIENTO DE API
 app.listen(PORT, () => {
-  console.log(`Api escuchando en ${PORT}`);
+  console.log(`Api escuchado ${PORT}`);
 });

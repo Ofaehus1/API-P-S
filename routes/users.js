@@ -1,26 +1,20 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
 
-const basePersona = require('../Bd/bdUsers.json');
+import {
+  agregar,
+  listar,
+  eliminar,
+  editar,
+  listaUno,
+} from '../controllers/userController';
+
 //Ruta es para gestionar usuarios
 
-//Obtener usuarios
-router.get('/', (req, res) => {
-  res.json(basePersona);
-});
+router.get('/', listar);
+router.get('/', listaUno);
+router.post('/', agregar);
+router.put('/', editar);
+router.delete('/', eliminar);
 
-//crear un usuario
-router.post('/', (req, res) => {
-  console.log(req.body);
-  const { name, lastname, bornyear, gender, tall, age, profession } = req.body;
-  if (name && lastname && bornyear && gender && tall && age && profession) {
-    const id = basePersona.length + 1;
-    const newUser = { ...req.body, id };
-    basePersona.push(newUser);
-    res.json(basePersona);
-  } else {
-    res.send('Error en la peticion');
-  }
-});
-
-module.exports = router;
+export default router;
