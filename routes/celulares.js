@@ -70,26 +70,26 @@ router.get('/', listar);
 
 /**
  * @swagger
- * /api/users/{id}:
+ * /api/celulares/{id}:
  *   get:
- *     summary: Obtiene un usuario por su ID
- *     tags: [Users]
+ *     summary: Obtiene un dispositivo por su ID
+ *     tags: [celulares]
  *     parameters:
  *       - in: path
  *         name: id
  *         schema:
  *           type: string
  *         required: true
- *         description: ID del usuario a obtener
+ *         description: ID del dispositvo  a obtener
  *     responses:
  *       200:
- *         description: Usuario encontrado exitosamente
+ *         description: El dispositivo se encontrado exitosamente
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/User'
+ *               $ref: '#/components/schemas/celulares'
  *       404:
- *         description: El usuario con el ID especificado no fue encontrado
+ *         description: El dispositivo  con el ID  no se pudo encontrar
  */
 
 router.get('/:id', listaUno);
@@ -98,26 +98,26 @@ router.get('/:id', listaUno);
  * @swagger
  * /api/users/{id}:
  *   put:
- *     summary: Actualiza un usuario existente
- *     tags: [Users]
+ *     summary: Actualiza un dispositivo existente
+ *     tags: [celulares]
  *     parameters:
  *       - in: path
  *         name: id
  *         schema:
  *           type: string
  *         required: true
- *         description: ID del usuario a actualizar
+ *         description: IME del dispositivo a actualizar
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/User'
+ *             $ref: '#/components/schemas/celullares'
  *     responses:
  *       200:
  *         description: Usuario actualizado exitosamente
  *       404:
- *         description: El usuario con el ID especificado no fue editado
+ *         description: El dispositivo con el IME especificado no fue editado
  *
  */
 
@@ -127,11 +127,11 @@ router.post('/', agregar);
  * @swagger
  * /api/users:
  *   get:
- *     summary: Obtiene todos los usuarios
- *     tags: [Users]
+ *     summary: Obtiene todos los dispositivos
+ *     tags: [celulares]
  *     responses:
  *       200:
- *         description: Lista de todos los usuarios
+ *         description: Lista de todos los dispositivos
  *         content:
  *           application/json:
  *             schema:
@@ -144,28 +144,28 @@ router.put('/:id', editar);
 
 /**
  * @swagger
- * /api/users/{id}:
+ * /api/celulares/{id}:
  *   delete:
- *     summary: Elimina un usuario existente
- *     tags: [Users]
+ *     summary: Elimina un dispositivo existente
+ *     tags: [celulares]
  *     parameters:
  *       - in: path
  *         name: id
  *         schema:
  *           type: string
  *         required: true
- *         description: ID del usuario a actualizar
+ *         description: IME del dispositivo a actualizar
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/User'
+ *             $ref: '#/components/schemas/celulares'
  *     responses:
  *       200:
- *         description: Usuario eliminado exitosamente
+ *         description: Dispositivo eliminado exitosamente
  *       404:
- *         description: El usuario con el ID especificado no fue eliminado
+ *         description: El dispositivo con el IME especificado no fue eliminado
  *
  */
 
