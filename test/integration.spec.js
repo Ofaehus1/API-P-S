@@ -1,14 +1,14 @@
 //
 const request = require('supertest');
 const mongoose = require('mongoose');
-import Usuario from'../models/Users';
+import Usuario from'../models/users.js';
 
 //Importando app de index.js
 import app from '../index'
 
 // Configuración de las pruebas
 beforeAll(async () => {
-  const url = process.env.MONGO_URI
+  const url = process.env.MONGO_URL
   await mongoose.connect(url, { useNewUrlParser: true });
 });
 
