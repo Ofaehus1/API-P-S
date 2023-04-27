@@ -1,8 +1,8 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import conectarBD from './config/bd';
+import conectarBD from './config/bd.js';
 
-import router from './routes/users';
+import router from './routes/users.js';
 
 const app = express();
 app.use(express.json());
