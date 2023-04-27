@@ -1,5 +1,4 @@
 import Usuario from '../routes/users.js';
-
 //Crear
 const agregar = async (req, res) => {
   try {
@@ -16,10 +15,9 @@ const agregar = async (req, res) => {
 };
 //leer
 const listar = async (req, res) => {
-  const usuarios = await Usuario.find();
+  const usuarios = await usuario.find();
   res.json(usuarios);
 };
-
 //Eliminar
 const eliminar = async (req, res) => {
   //recibe los parametros por la url
@@ -40,7 +38,6 @@ const eliminar = async (req, res) => {
     console.log(error);
   }
 };
-
 const editar = async (req, res) => {
   const { id } = req.params;
   const usuario = await Usuario.findById(id);
@@ -53,12 +50,10 @@ const editar = async (req, res) => {
       ok: 'si',
     });
   }
+  usuario.nombreUsuario = req.body.nombreUsuario || usuario.nombreUsuario;
+  usuario.celularUsuario = req.body.celularUsuario || usuario.celularUsuario;
 };
-
 //Captura los datos del formulario
-
-usuario.nombreUsuario = req.body.nombreUsuario || usuario.nombreUsuario;
-usuario.celularUsuario = req.body.celularUsuario || usuario.celularUsuario;
 
 try {
   const usuarioGuardado = await usuario.save();

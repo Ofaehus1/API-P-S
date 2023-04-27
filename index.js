@@ -8,8 +8,10 @@ const app = express();
 app.use(express.json());
 
 dotenv.config();
+
 conectarBD();
-app.use('/api/users', router);
+
+app.use('/api/users',router );
 
 const PORT = process.env.PORT || 3000;
 
