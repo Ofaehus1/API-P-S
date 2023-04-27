@@ -50,17 +50,15 @@ const editar = async (req, res) => {
       ok: 'si',
     });
   }
-  usuario.nombreUsuario = req.body.nombreUsuario || usuario.nombreUsuario;
-  usuario.celularUsuario = req.body.celularUsuario || usuario.celularUsuario;
+  usuario.nombresUsuario = req.body.nombreUsuario || usuario.nombresUsuario;
+  usuario.celularUsuario = req.body.ccelularUsuario || usuario.celularUsuario;
+  try {
+    const usuarioGuardado = await usuario.save();
+    res.json({ body: usuarioGuardado, msg: 'Registro actualizado.', ok: 'si' });
+  } catch (error) {
+    console.log(error);
+  }
 };
-//Captura los datos del formulario
-
-try {
-  const usuarioGuardado = await usuario.save();
-  res.json({ body: usuarioGuardado, msg: 'Registro actualizado.', ok: 'si' });
-} catch (error) {
-  console.log(error);
-}
 
 const listaUno = async (req, res) => {
   const { id } = req.params;
