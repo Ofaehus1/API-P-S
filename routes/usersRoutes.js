@@ -1,13 +1,7 @@
-import express from 'express';
+import express from "express";
 const router = express.Router();
 
-import {
-  agregar,
-  listar,
-  eliminar,
-  editar,
-  listaUno,
-} from '../controllers/userController.js';
+import { agregar, listar, eliminar, editar, listarUno } from "../controllers/userController.js";
 
 /**
  * @swagger
@@ -64,10 +58,25 @@ import {
  *         description: Los campos nombresUsuario y celularUsuario son requeridos
  */
 
+router.post("/", agregar);
 
-//Ruta es para gestionar usuarios
-
-router.get('/', listar);
+/**
+ * @swagger
+ * /api/users:
+ *   get:
+ *     summary: Obtiene todos los usuarios
+ *     tags: [Users]
+ *     responses:
+ *       200:
+ *         description: Lista de todos los usuarios
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/User'
+ */
+router.get("/", listar);
 
 /**
  * @swagger
@@ -92,8 +101,7 @@ router.get('/', listar);
  *       404:
  *         description: El usuario con el ID especificado no fue encontrado
  */
-
-router.get('/:id', listaUno);
+router.get("/:id", listarUno);
 
 /**
  * @swagger
@@ -121,29 +129,7 @@ router.get('/:id', listaUno);
  *         description: El usuario con el ID especificado no fue editado
  *
  */
-
-
-router.post('/', agregar);
-
-/**
- * @swagger
- * /api/users:
- *   get:
- *     summary: Obtiene todos los usuarios
- *     tags: [Users]
- *     responses:
- *       200:
- *         description: Lista de todos los usuarios
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 $ref: '#/components/schemas/User'
- */
-
-
-router.put('/:id', editar);
+router.put("/:id", editar);
 
 /**
  * @swagger
@@ -171,7 +157,6 @@ router.put('/:id', editar);
  *         description: El usuario con el ID especificado no fue eliminado
  *
  */
-
-router.delete('/:id', eliminar);
+router.delete("/:id", eliminar);
 
 export default router;

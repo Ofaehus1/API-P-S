@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\config",
+    "\\controllers",
+    "\\docs",
+    "\\files",
+    "\\models",
+    "\\routes",
+    "\\test"
+  ],
+  "SelectedNode": "\\.babelrc",
+  "PreviewInSolutionExplorer": false
+}
