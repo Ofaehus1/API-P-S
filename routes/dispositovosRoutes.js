@@ -7,42 +7,45 @@ import {
   eliminar,
   editar,
   listarUno,
-} from '../controllers/userController.js';
+} from '../controllers/dispositivos.js';
 
 /**
  * @swagger
  * tags:
  *   name: Dispositivos
- *   description: API para gestionar moviles
+ *   description: API para gestionar usuarios
  */
 
 /**
  * @swagger
  * components:
  *   schemas:
- *     Dispositivos:
+ *     User:
  *       type: object
  *       required:
- *         - Dispositivo
- *         - IME
+ *         - nombresUsuario
+ *         - celularUsuario
  *       properties:
  *         id:
  *           type: string
  *           description: ID generado automáticamente por MongoDB
- *         Dispositivo:
+ *         nombresUsuario:
  *           type: string
- *           description: Nombre del dispositivo
- *         IME:
+ *           description: Nombre completo del usuario
+ *         celularUsuario:
  *           type: number
- *           description: Número de IME
+ *           description: Número de teléfono del usuario
  *       example:
- *         
+ *         id: 60a3f3ca4827d03154d694a7
+ *         nombresUsuario: John Doe
+ *         celularUsuario: 1234567890
  */
+
 /**
  * @swagger
- * /api/users:
+ * /api/dispositivos:
  *   post:
- *     summary: Agrega un nuevo Dispositivo
+ *     summary: Agrega un nuevo usuario
  *     tags: [Dispositivos]
  *     requestBody:
  *       required: true
@@ -52,20 +55,23 @@ import {
  *             $ref: '#/components/schemas/Dispositivos'
  *     responses:
  *       200:
- *         description: Dispositivo agregado exitosamente
+ *         description: Usuario agregado exitosamente
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/Dispositivos'
+ *               $ref: '#/components/schemas/User'
  *       400:
- *         description: Los campos  dispositivo y IME son requeridos
+ *         description: Los campos nombresUsuario y celularUsuario son requeridos
  */
+
+router.post("/", agregar);
+
 /**
  * @swagger
- * /api/users:
+ * /api/dispositivos:
  *   get:
  *     summary: Obtiene todos los usuarios
- *     tags: [Users]
+ *     tags: [Dispositivos]
  *     responses:
  *       200:
  *         description: Lista de todos los usuarios
@@ -74,13 +80,13 @@ import {
  *             schema:
  *               type: array
  *               items:
- *                 $ref: '#/components/schemas/User'
+ *                 $ref: '#/components/schemas/Dispositivos'
  */
 router.get("/", listar);
 
 /**
  * @swagger
- * /api/users/{id}:
+ * /api/dispositivos/{id}:
  *   get:
  *     summary: Obtiene un usuario por su ID
  *     tags: [Users]
@@ -97,7 +103,7 @@ router.get("/", listar);
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/User'
+ *               $ref: '#/components/schemas/Dispositivos'
  *       404:
  *         description: El usuario con el ID especificado no fue encontrado
  */
@@ -105,7 +111,7 @@ router.get("/:id", listarUno);
 
 /**
  * @swagger
- * /api/users/{id}:
+ * /api/dispositivos/{id}:
  *   put:
  *     summary: Actualiza un usuario existente
  *     tags: [Users]
@@ -121,7 +127,7 @@ router.get("/:id", listarUno);
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/User'
+ *             $ref: '#/components/schemas/Dispositivos'
  *     responses:
  *       200:
  *         description: Usuario actualizado exitosamente
@@ -133,7 +139,7 @@ router.put("/:id", editar);
 
 /**
  * @swagger
- * /api/users/{id}:
+ * /api/dispositivos/{id}:
  *   delete:
  *     summary: Elimina un usuario existente
  *     tags: [Users]
@@ -149,7 +155,7 @@ router.put("/:id", editar);
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/User'
+ *             $ref: '#/components/schemas/Dispositivos'
  *     responses:
  *       200:
  *         description: Usuario eliminado exitosamente
@@ -157,8 +163,8 @@ router.put("/:id", editar);
  *         description: El usuario con el ID especificado no fue eliminado
  *
  */
+router.delete("/:id", eliminar);
 
-router.post("/", agregar);
 
 
 export default router;
