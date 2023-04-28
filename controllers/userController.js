@@ -1,6 +1,7 @@
 import Usuario from '../routes/users.js';
 //Crear
 const agregar = async (req, res) => {
+  console.log('entro')
   try {
     const usuario = new Usuario(req.body);
     const usuarioGuardado = await usuario.save();

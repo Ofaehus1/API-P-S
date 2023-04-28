@@ -1,12 +1,12 @@
 import  express  from "express";
 const userSchema = mongoose.Schema({
   nombresUsuario: {
-    type: String,
+    type: string,
     require: true,
     trim: true
   },
   celularUsuario: {
-    type: Number,
+    type: number,
     require: true,
     trim: true
   }
