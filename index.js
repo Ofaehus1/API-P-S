@@ -8,7 +8,7 @@ import swaggerSpec from './docs/swagger.js';
 
 //Importación de rutas
 import usersRoutes from "./routes/usersRoutes.js"
-import Dispositivo from './models/Dispositivos.js';
+import dispositivoRoutes from './routes/dispositovosRoutes.js';
 
 
 //Iniciamos el servidor express
@@ -23,7 +23,7 @@ conectarBD();
 
 //Routing del API
 app.use("/api/users", usersRoutes);
-app.use("/api/dispositivos", Dispositivo);
+app.use("/api/dispositivos",dispositivoRoutes);
 
 //Ruta de la documentación
 app.use('/documentation', swaggerUI.serve, swaggerUI.setup(swaggerSpec))
