@@ -23,8 +23,8 @@ import {
  *     User:
  *       type: object
  *       required:
- *         - nombresUsuario
- *         - celularUsuario
+ *         - Dispositivo
+ *         - IME
  *       properties:
  *         id:
  *           type: string
@@ -89,7 +89,7 @@ router.get("/", listar);
  * /api/dispositivos/{id}:
  *   get:
  *     summary: Obtiene un usuario por su ID
- *     tags: [Users]
+ *     tags: [Dispositivos]
  *     parameters:
  *       - in: path
  *         name: id
@@ -114,7 +114,7 @@ router.get("/:id", listarUno);
  * /api/dispositivos/{id}:
  *   put:
  *     summary: Actualiza un usuario existente
- *     tags: [Users]
+ *     tags: [Dispositivos]
  *     parameters:
  *       - in: path
  *         name: id
@@ -142,7 +142,7 @@ router.put("/:id", editar);
  * /api/dispositivos/{id}:
  *   delete:
  *     summary: Elimina un usuario existente
- *     tags: [Users]
+ *     tags: [Dispositivos]
  *     parameters:
  *       - in: path
  *         name: id
