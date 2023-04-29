@@ -29,23 +29,20 @@ import {
  *         id:
  *           type: string
  *           description: ID generado automáticamente por MongoDB
- *         nombresUsuario:
+ *         Dispositivo:
  *           type: string
- *           description: Nombre completo del usuario
- *         celularUsuario:
+ *           description: Nombre del dispositivo
+ *         IME:
  *           type: number
- *           description: Número de teléfono del usuario
- *       example:
- *         id: 60a3f3ca4827d03154d694a7
- *         nombresUsuario: John Doe
- *         celularUsuario: 1234567890
+ *           description: Número de IME
+ *  
  */
 
 /**
  * @swagger
  * /api/dispositivos:
  *   post:
- *     summary: Agrega un nuevo usuario
+ *     summary: Agrega un nuevo dispositivo
  *     tags: [Dispositivos]
  *     requestBody:
  *       required: true
@@ -55,13 +52,13 @@ import {
  *             $ref: '#/components/schemas/Dispositivos'
  *     responses:
  *       200:
- *         description: Usuario agregado exitosamente
+ *         description: Dispositivo agregado exitosamente
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/User'
+ *               $ref: '#/components/schemas/Dispositivos'
  *       400:
- *         description: Los campos nombresUsuario y celularUsuario son requeridos
+ *         description: Los campos Dispositivo y IME son requeridos
  */
 
 router.post("/", agregar);
@@ -70,11 +67,11 @@ router.post("/", agregar);
  * @swagger
  * /api/dispositivos:
  *   get:
- *     summary: Obtiene todos los usuarios
+ *     summary: Obtiene todos los dispositivos
  *     tags: [Dispositivos]
  *     responses:
  *       200:
- *         description: Lista de todos los usuarios
+ *         description: Lista de todos los dispositivos
  *         content:
  *           application/json:
  *             schema:
@@ -88,7 +85,7 @@ router.get("/", listar);
  * @swagger
  * /api/dispositivos/{id}:
  *   get:
- *     summary: Obtiene un usuario por su ID
+ *     summary: Obtiene un dispositivo por su ID
  *     tags: [Dispositivos]
  *     parameters:
  *       - in: path
@@ -96,16 +93,16 @@ router.get("/", listar);
  *         schema:
  *           type: string
  *         required: true
- *         description: ID del usuario a obtener
+ *         description: ID del dispositivo a obtener
  *     responses:
  *       200:
- *         description: Usuario encontrado exitosamente
+ *         description: Dispositivo encontrado exitosamente
  *         content:
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/Dispositivos'
  *       404:
- *         description: El usuario con el ID especificado no fue encontrado
+ *         description: El dispositivo con el ID especificado no fue encontrado
  */
 router.get("/:id", listarUno);
 
@@ -113,7 +110,7 @@ router.get("/:id", listarUno);
  * @swagger
  * /api/dispositivos/{id}:
  *   put:
- *     summary: Actualiza un usuario existente
+ *     summary: Actualiza un dispositivo existente
  *     tags: [Dispositivos]
  *     parameters:
  *       - in: path
@@ -121,7 +118,7 @@ router.get("/:id", listarUno);
  *         schema:
  *           type: string
  *         required: true
- *         description: ID del usuario a actualizar
+ *         description: ID del dispositivo a actualizar
  *     requestBody:
  *       required: true
  *       content:
@@ -130,9 +127,9 @@ router.get("/:id", listarUno);
  *             $ref: '#/components/schemas/Dispositivos'
  *     responses:
  *       200:
- *         description: Usuario actualizado exitosamente
+ *         description: Dispositivo actualizado exitosamente
  *       404:
- *         description: El usuario con el ID especificado no fue editado
+ *         description: El dispositivo con el ID especificado no fue editado
  *
  */
 router.put("/:id", editar);
@@ -141,7 +138,7 @@ router.put("/:id", editar);
  * @swagger
  * /api/dispositivos/{id}:
  *   delete:
- *     summary: Elimina un usuario existente
+ *     summary: Elimina un dispositivo existente
  *     tags: [Dispositivos]
  *     parameters:
  *       - in: path
@@ -149,7 +146,7 @@ router.put("/:id", editar);
  *         schema:
  *           type: string
  *         required: true
- *         description: ID del usuario a actualizar
+ *         description: ID del dispositivo a actualizar
  *     requestBody:
  *       required: true
  *       content:
@@ -158,9 +155,9 @@ router.put("/:id", editar);
  *             $ref: '#/components/schemas/Dispositivos'
  *     responses:
  *       200:
- *         description: Usuario eliminado exitosamente
+ *         description: Dispositivo eliminado exitosamente
  *       404:
- *         description: El usuario con el ID especificado no fue eliminado
+ *         description: El dispositivo con el ID especificado no fue eliminado
  *
  */
 router.delete("/:id", eliminar);
