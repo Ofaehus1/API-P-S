@@ -20,7 +20,7 @@ import {
  * @swagger
  * components:
  *   schemas:
- *     User:
+ *     Dispositivos:
  *       type: object
  *       required:
  *         - Dispositivo
