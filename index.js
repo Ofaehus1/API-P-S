@@ -34,7 +34,7 @@ const PORT = process.env.PORT || 3000
 
 //Lanzando el API
 app.listen(PORT,()=>{
-  console.log(`Api escuchando en ${PORT} 😂`)
+  console.log(`Api escuchando en ${PORT}`)
 })
 
 export default app;

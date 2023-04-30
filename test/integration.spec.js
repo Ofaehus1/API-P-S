@@ -2,9 +2,10 @@
 const request = require('supertest');
 const mongoose = require('mongoose');
 import Usuario from'../models/Users';
+import Dispositivo from '../models/Dispositivos';
 
 //Importando app de index.js
-import app from '../index'
+import app from '../index.js'
 
 // Configuración de las pruebas
 beforeAll(async () => {
@@ -38,6 +39,38 @@ describe('GET /api/users', () => {
 // Limpiar las colecciones de la base de datos después de las pruebas
 afterEach(async () => {
   await Usuario.deleteMany();
+});
+
+// Cerrar la conexión con la base de datos después de las pruebas
+afterAll(async () => {
+  await mongoose.connection.close();
+});
+// Prueba de integración para el endpoint GET /usuarios
+describe('GET /api/dispositivos', () => {
+  it('Debería obtener todos los dispositivos', async () => {
+    // Crear algunos dispositivos para la prueba
+    const dispositivos = [
+      { Dispositivo: 'Samsung A21', IME: 123456789 },
+      { Dispositivo: 'Motorola G2', IME: 987654321 },
+    ];
+    await Dispositivo.insertMany(dispositivos);
+
+    // Hacer la solicitud GET a /dispositivos
+    const response = await request(app).get('/api/dispositivos');
+
+    // Verificar que la respuesta tenga el status 200
+    expect(response.status).toBe(200);
+
+    // Verificar que la respuesta tenga los dispositivos creados
+    expect(response.body).toHaveLength(dispositivos.length);
+    expect(response.body[0].Dispositivo).toBe(dispositivos[0].Dispositivo);
+    expect(response.body[1].IME).toBe(dispositivos[1].IME);
+  });
+});
+
+// Limpiar las colecciones de la base de datos después de las pruebas
+afterEach(async () => {
+  await Dispositivo.deleteMany();
 });
 
 // Cerrar la conexión con la base de datos después de las pruebas
